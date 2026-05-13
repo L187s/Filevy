@@ -55,8 +55,16 @@ Most converters upload your files to a server somewhere.
 
 ### Requirements
 - Windows 10 / 11
-- .NET 8 (WPF)
-- Visual Studio 2022 oder Rider
+- .NET 9 (WPF)
+- Visual Studio 2022/2026 or Rider
+
+### Desktop Runtime Version 9.0.16 (Microsoft)
+The following Runtime version needs to be downloaded to work on this project
+
+#### Download Link 9.0.16 ⚠️Be aware the link auto-downloads the file⚠️
+https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-desktop-9.0.16-windows-x64-installer?cid=getdotnetcore 
+
+
 
 ### Build & Run
 
