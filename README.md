@@ -1,4 +1,4 @@
-# 🗂️ Filevy - Version 0.2.0
+# 🗂️ Filevy - Version 0.2.1
 
 > **Convert anything. Share nothing.**
 
@@ -38,7 +38,7 @@ Most converters upload your files to a server somewhere.
 
 | # | Conversion | Status |
 |---|-----------|--------|
-| 01 | PNG / JPG / WEBP ↔ each other | ⚠️ PNG / JPG ↔ each other. But WEBP not working yet  — [Issue #1](https://github.com/YOUR_USERNAME/Filevy/issues/1) |
+| 01 | PNG / JPG / WEBP ↔ each other | ✅ PNG / JPG ↔ each other — [Issue #1](https://github.com/YOUR_USERNAME/Filevy/issues/1) |
 | 02 | PDF → DOCX | ❌ Not finished yet — [Issue #2](https://github.com/YOUR_USERNAME/Filevy/issues/2) |
 | 03 | DOCX / TXT → PDF | ❌ Not finished yet — [Issue #3](https://github.com/YOUR_USERNAME/Filevy/issues/3) |
 | 04 | MP4 → MP3 | ❌ Not finished yet — [Issue #4](https://github.com/YOUR_USERNAME/Filevy/issues/4) |
