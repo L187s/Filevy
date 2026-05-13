@@ -1,65 +1,76 @@
 # Changelog
 
-All notable changes to Filevy will be documented here.
+All notable changes to Filevy are documented in this file.
+This project follows the [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) format.
 
 ---
 
 ## [Unreleased]
 
-- Conversion features in progress — see open issues
+- Remaining conversion types in progress — see open issues
 
 ---
 
-## [0.2.1] - 2026-05-13
+## [0.2.1] — 2026-05-13
 
 ### Added
-- Dark / Light theme toggle with instant switching
-- Custom title bar (minimize, maximize, close) replacing default Windows chrome
-- WEBP conversion support via SkiaSharp (PNG ↔ JPG ↔ WEBP now fully working)
-- Job list with progress bar and percentage display
-- "Show in Explorer" button — opens output folder after conversion completes
+- Dark and light theme support with instant toggle, no restart required
+- Custom title bar replacing the default Windows chrome (minimize, maximize, close)
+- WEBP read and write support via SkiaSharp — full PNG / JPG / WEBP interconversion now available
+- Live progress bar per conversion job with percentage display
+- Job history list showing input file, output file, conversion type and progress
+- "Show in Explorer" button — opens the output directory once a conversion completes
 
 ### Changed
-- Replaced placeholder UI with a fully structured MVVM-wired main window
-- Image converter rewritten using SkiaSharp — handles all three formats consistently
+- Image converter rewritten using SkiaSharp, replacing the previous WPF-native codec implementation
+- Main window fully wired to MVVM — no logic in code-behind
 
 ### Fixed
-- Crash when converting to WEBP (missing encoder — now handled by SkiaSharp)
+- Application crash when attempting to convert to WEBP due to missing WPF encoder
 
 ---
 
-## [0.2.0] - 2026-05-12
-
-### Added 
-- Added functionality to Convert JPG/PNG
-- Added GUI MockUp for tests
-
-#### Be Aware ⚠️
-- Be aware that when you try to convert to .webp the program cashes.
-- Nuget Package needed: SkiaSharp (Documentation: https://skiasharp.com/)
-
-## [0.1.2] - 2026-05-12
-### Added 
-- Added MVVM Files
-- Added MVVM Folder-Structure
-
-## [0.1.1] - 2026-05-12
-
-### Changed
-- Changed the .Net version in the Readme file from 8.0 to 9.0
+## [0.2.0] — 2026-05-12
 
 ### Added
-- Added the download-link to the .Net version 9.0 (official Microsoft site)
+- PNG and JPG interconversion using built-in WPF codecs
+- Initial GUI layout for conversion workflow
 
-### Issue Update
-- Closing this Version Closes the Issue: https://github.com/L187s/Filevy/issues/12
+### Known Issues
+- Conversion to WEBP causes a crash — resolved in 0.2.1
+- Requires NuGet package: SkiaSharp
+
+---
+
+## [0.1.2] — 2026-05-12
+
+### Added
+- MVVM folder structure (Models, Views, ViewModels, Commands, Converters)
+- ViewModelBase with INotifyPropertyChanged
+- RelayCommand implementing ICommand
+- MainViewModel wired as DataContext
+
+---
+
+## [0.1.1] — 2026-05-12
+
+### Changed
+- Updated .NET target version in README from 8.0 to 9.0
+
+### Added
+- Direct download link for .NET Desktop Runtime 9.0 (official Microsoft installer)
+
+### References
+- Closes [Issue #12](https://github.com/L187s/Filevy/issues/12)
+
+---
 
 ## [0.1.0] — 2026-05-11
 
 ### Added
 - Initial project setup (WPF, .NET 9)
-- README with project description and privacy manifesto
-- 10 planned conversion types listed as Good First Issues
+- README with project description and privacy policy
+- 10 planned conversion types, each tracked as a Good First Issue on GitHub:
   - PNG / JPG / WEBP ↔ each other
   - PDF → DOCX
   - DOCX / TXT → PDF

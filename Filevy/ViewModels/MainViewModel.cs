@@ -35,18 +35,34 @@ namespace Filevy.ViewModels
             set { _selectedJob = value; OnPropertyChanged(); }
         }
 
+        private bool _isDarkTheme = true;
+        public bool IsDarkTheme
+        {
+            get => _isDarkTheme;
+            set { _isDarkTheme = value; OnPropertyChanged(); OnPropertyChanged(nameof(ThemeIcon)); }
+        }
+        public string ThemeIcon => IsDarkTheme ? "☀️" : "🌙";
+
         public ObservableCollection<string> AvailableFormats { get; } = new();
         public ObservableCollection<ConversionJob> Jobs { get; } = new();
 
         public RelayCommand SelectFileCommand { get; }
         public RelayCommand ConvertCommand { get; }
         public RelayCommand ShowOutputFolderCommand { get; }
+        public RelayCommand ToggleThemeCommand { get; }
 
         public MainViewModel()
         {
             SelectFileCommand = new RelayCommand(SelectFile);
             ConvertCommand = new RelayCommand(AddConversionJob);
             ShowOutputFolderCommand = new RelayCommand(ShowOutputFolder);
+            ToggleThemeCommand = new RelayCommand(ToggleTheme);
+        }
+
+        private void ToggleTheme()
+        {
+            IsDarkTheme = !IsDarkTheme;
+            App.SwitchTheme(IsDarkTheme);
         }
 
         private void SelectFile()

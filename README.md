@@ -1,103 +1,117 @@
-# 🗂️ Filevy - Version 0.2.1
+# Filevy
 
-> **Convert anything. Share nothing.**
+**Local file conversion. No cloud. No compromise.**
 
-Filevy is a free, open-source file converter for Windows — built with WPF.  
-No internet. No cloud. No accounts. No telemetry. Your files never leave your computer. Ever.
-
----
-
-## 🔒 Privacy First — Always
-
-Most converters upload your files to a server somewhere.  
-**Filevy doesn't.** Not even a little bit.
-
-- ❌ No internet connection required
-- ❌ No cloud uploads
-- ❌ No API calls to external services
-- ❌ No accounts or logins
-- ❌ No telemetry or usage tracking
-- ✅ 100% offline — everything runs locally on your machine
-- ✅ Open source — verify it yourself
-
-**Your files are your files. Period.**
+Filevy is a free, open-source desktop file converter for Windows, built with WPF and .NET 9.
+Every conversion runs entirely on your machine — no internet connection, no data collection, no external dependencies of any kind.
 
 ---
 
-## ✨ Features
+## Privacy
 
-- 🖥️ Clean, modern WPF desktop UI
-- ⚡ Fast batch conversions
-- 📂 Drag & Drop support
-- 🔄 Supports 10+ conversion types (more coming!)
-- 🔒 Zero network access — completely air-gap safe
+Most file converters route your files through a remote server.
+Filevy does not. Every operation is performed locally, using either built-in .NET libraries or verified open-source NuGet packages.
+
+- No internet connection required
+- No cloud uploads or remote processing
+- No API calls to external services
+- No accounts, logins, or registration
+- No telemetry or usage tracking
+- Fully air-gap safe
+
+Your files remain on your machine at all times.
 
 ---
 
-## 🔄 Supported Conversions
+## Features
+
+- Modern WPF desktop interface with dark and light theme support
+- Live conversion progress tracking per job
+- Job history view with input/output file names and conversion type
+- Output folder navigation directly from the UI
+- 100% offline — no network access at any point
+
+---
+
+## Supported Conversions
 
 | # | Conversion | Status |
-|---|-----------|--------|
-| 01 | PNG / JPG / WEBP ↔ each other | ✅ PNG / JPG ↔ each other — [Issue #1](https://github.com/L187s/Filevy/issues/1) |
-| 02 | PDF → DOCX | ❌ Not finished yet — [Issue #2](https://github.com/L187s/Filevy/issues/2) |
-| 03 | DOCX / TXT → PDF | ❌ Not finished yet — [Issue #3](https://github.com/L187s/Filevy/issues/3) |
-| 04 | MP4 → MP3 | ❌ Not finished yet — [Issue #4](https://github.com/L187s/Filevy/issues/4) |
-| 05 | CSV → XLSX (Excel) | ❌ Not finished yet — [Issue #5](https://github.com/L187s/Filevy/issues/5) |
-| 06 | SVG → PNG / PDF | ❌ Not finished yet — [Issue #6](https://github.com/L187s/Filevy/issues/6) |
-| 07 | MP3 / WAV ↔ each other | ❌ Not finished yet — [Issue #7](https://github.com/L187s/Filevy/issues/7) |
-| 08 | HEIC → JPG / PNG | ❌ Not finished yet — [Issue #8](https://github.com/L187s/Filevy/issues/8) |
-| 09 | Markdown → HTML / PDF | ❌ Not finished yet — [Issue #9](https://github.com/L187s/Filevy/issues/9) |
-| 10 | ZIP / RAR ↔ ZIP / 7Z | ❌ Not finished yet — [Issue #10](https://github.com/L187s/Filevy/issues/10) |
+|---|---|---|
+| 01 | PNG / JPG / WEBP ↔ each other | ✅ Available — [Issue #1](https://github.com/L187s/Filevy/issues/1) |
+| 02 | PDF → DOCX | ⏳ In progress — [Issue #2](https://github.com/L187s/Filevy/issues/2) |
+| 03 | DOCX / TXT → PDF | ⏳ In progress — [Issue #3](https://github.com/L187s/Filevy/issues/3) |
+| 04 | MP4 → MP3 | ⏳ In progress — [Issue #4](https://github.com/L187s/Filevy/issues/4) |
+| 05 | CSV → XLSX | ❌ Not started — [Issue #5](https://github.com/L187s/Filevy/issues/5) |
+| 06 | SVG → PNG / PDF | ❌ Not started — [Issue #6](https://github.com/L187s/Filevy/issues/6) |
+| 07 | MP3 / WAV ↔ each other | ❌ Not started — [Issue #7](https://github.com/L187s/Filevy/issues/7) |
+| 08 | HEIC → JPG / PNG | ❌ Not started — [Issue #8](https://github.com/L187s/Filevy/issues/8) |
+| 09 | Markdown → HTML / PDF | ❌ Not started — [Issue #9](https://github.com/L187s/Filevy/issues/9) |
+| 10 | ZIP / RAR ↔ ZIP / 7Z | ❌ Not started — [Issue #10](https://github.com/L187s/Filevy/issues/10) |
 
 ---
 
-## 🚀 Getting Started
+## Requirements
 
-### Requirements
-- Windows 10 / 11
-- .NET 9 (WPF)
-- Visual Studio 2022/2026 or Rider
+| Requirement | Version |
+|---|---|
+| Operating System | Windows 10 / 11 (x64) |
+| .NET Desktop Runtime | 9.0.16 |
+| IDE (for development) | Visual Studio 2022+ or JetBrains Rider |
 
-### Desktop Runtime Version 9.0.16 (Microsoft)
-The following Runtime version needs to be downloaded to work on this project
+**.NET 9.0.16 Desktop Runtime** is required to run Filevy.
+[Download from Microsoft](https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-desktop-9.0.16-windows-x64-installer?cid=getdotnetcore)
 
-#### Download Link 9.0.16 ⚠️Be aware the link auto-downloads the file⚠️
-https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-desktop-9.0.16-windows-x64-installer?cid=getdotnetcore 
+> The link above initiates an automatic download of the official Microsoft installer.
 
+---
 
-### Build & Run
+## NuGet Dependencies
+
+| Package | Version | Purpose |
+|---|---|---|
+| [SkiaSharp](https://github.com/mono/SkiaSharp) | latest stable | Image encoding/decoding (PNG, JPG, WEBP) |
+
+---
+
+## Getting Started
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/Filevy.git
+git clone https://github.com/L187s/Filevy.git
 cd Filevy
 dotnet build
 dotnet run
 ```
 
-### ℹ️ Keep a Changelog
-We´re using the system [Keep a Changelog📖](https://keepachangelog.com/en/1.1.0/)
+---
 
-Look at recent internal changes in your [Changelog 0.2.0 ℹ️](https://github.com/L187s/Filevy/blob/main/CHANGELOG.md)
+## Contributing
+
+Filevy is open to contributions. Every planned conversion type has a corresponding GitHub issue labeled **Good First Issue**.
+
+**Before contributing, please read:**
+
+- All conversions must run **100% locally** — no API calls, no cloud services, no external network requests of any kind
+- Each pull request should cover **one conversion type only**
+- NuGet packages are permitted provided they are MIT-licensed and do not perform any network activity
+
+**Workflow:**
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature/your-conversion`
+3. Implement the conversion
+4. Open a pull request against `main`
+
+For questions or discussion, use the relevant GitHub issue.
 
 ---
 
-## 🤝 Contributing
+## Changelog
 
-This project is perfect for beginners and first-time contributors!
-
-Every conversion above has its own **Good First Issue** on GitHub. Pick one, implement it, and open a pull request.
-
-> ⚠️ Important: All conversions must run **100% locally** using NuGet packages or built-in .NET libraries only. No API calls, no cloud services, no external network requests of any kind.
-
-1. Fork the repo
-2. Create a branch: `git checkout -b feature/png-to-jpg`
-3. Implement the conversion (locally only!)
-4. Open a Pull Request
-
-Please keep each PR to **one conversion type** so reviews stay focused.
+This project follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
+See [CHANGELOG.md](https://github.com/L187s/Filevy/blob/main/CHANGELOG.md) for the full version history.
 
 ---
 
-## 📄 License
+## License
 
-MIT — do whatever you want with it.
+MIT License — see [LICENSE.txt](LICENSE.txt) for details.
