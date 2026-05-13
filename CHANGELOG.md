@@ -10,6 +10,11 @@ All notable changes to Filevy will be documented here.
 
 ---
 
+## [0.1.2] - 2026-05-12
+### Added 
+- Added MVVM Files
+- Added MVVM Folder-Structure
+
 ## [0.1.1] - 2026-05-12
 
 ### Changed
