@@ -1,6 +1,6 @@
-﻿using System;
+﻿using SkiaSharp;
+using System;
 using System.IO;
-using System.Windows.Media.Imaging;
 
 namespace Filevy.Converters
 {
@@ -10,29 +10,24 @@ namespace Filevy.Converters
         {
             progress?.Report(20);
 
-            BitmapFrame frame;
-            using (var stream = File.OpenRead(inputPath))
-            {
-                var decoder = BitmapDecoder.Create(stream, BitmapCreateOptions.PreservePixelFormat, BitmapCacheOption.OnLoad);
-                frame = decoder.Frames[0];
-                frame.Freeze();
-            }
+            using var input = File.OpenRead(inputPath);
+            using var bitmap = SKBitmap.Decode(input);
 
             progress?.Report(60);
 
             var ext = Path.GetExtension(outputPath).ToLower();
-            BitmapEncoder encoder = ext switch
+            SKEncodedImageFormat format = ext switch
             {
-                ".jpg" or ".jpeg" => new JpegBitmapEncoder { QualityLevel = 90 },
-                ".png" => new PngBitmapEncoder(),
+                ".jpg" or ".jpeg" => SKEncodedImageFormat.Jpeg,
+                ".png" => SKEncodedImageFormat.Png,
+                ".webp" => SKEncodedImageFormat.Webp,
                 _ => throw new NotSupportedException($"Format '{ext}' is not supported.")
             };
 
-            encoder.Frames.Add(BitmapFrame.Create(frame));
             progress?.Report(80);
 
-            using var outStream = File.Create(outputPath);
-            encoder.Save(outStream);
+            using var output = File.Create(outputPath);
+            bitmap.Encode(output, format, 90);
 
             progress?.Report(100);
         }

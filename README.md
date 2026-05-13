@@ -1,4 +1,4 @@
-# 🗂️ Filevy
+# 🗂️ Filevy - Version 0.2.0
 
 > **Convert anything. Share nothing.**
 
@@ -38,7 +38,7 @@ Most converters upload your files to a server somewhere.
 
 | # | Conversion | Status |
 |---|-----------|--------|
-| 01 | PNG / JPG / WEBP ↔ each other | ❌ Not finished yet — [Issue #1](https://github.com/YOUR_USERNAME/Filevy/issues/1) |
+| 01 | PNG / JPG / WEBP ↔ each other | ⚠️ PNG / JPG ↔ each other. But WEBP not working yet  — [Issue #1](https://github.com/YOUR_USERNAME/Filevy/issues/1) |
 | 02 | PDF → DOCX | ❌ Not finished yet — [Issue #2](https://github.com/YOUR_USERNAME/Filevy/issues/2) |
 | 03 | DOCX / TXT → PDF | ❌ Not finished yet — [Issue #3](https://github.com/YOUR_USERNAME/Filevy/issues/3) |
 | 04 | MP4 → MP3 | ❌ Not finished yet — [Issue #4](https://github.com/YOUR_USERNAME/Filevy/issues/4) |
@@ -65,7 +65,6 @@ The following Runtime version needs to be downloaded to work on this project
 https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-desktop-9.0.16-windows-x64-installer?cid=getdotnetcore 
 
 
-
 ### Build & Run
 
 ```bash
@@ -74,6 +73,11 @@ cd Filevy
 dotnet build
 dotnet run
 ```
+
+### ℹ️ Keep a Changelog
+We´re using the system [Keep a Changelog📖](https://keepachangelog.com/en/1.1.0/)
+
+Look at recent internal changes in your [Changelog 0.2.0 ℹ️](https://github.com/L187s/Filevy/blob/main/CHANGELOG.md)
 
 ---
 

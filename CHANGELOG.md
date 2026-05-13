@@ -10,6 +10,24 @@ All notable changes to Filevy will be documented here.
 
 ---
 
+## [0.2.1] - 2026-05-13
+
+### Added
+- Dark / Light theme toggle with instant switching
+- Custom title bar (minimize, maximize, close) replacing default Windows chrome
+- WEBP conversion support via SkiaSharp (PNG ↔ JPG ↔ WEBP now fully working)
+- Job list with progress bar and percentage display
+- "Show in Explorer" button — opens output folder after conversion completes
+
+### Changed
+- Replaced placeholder UI with a fully structured MVVM-wired main window
+- Image converter rewritten using SkiaSharp — handles all three formats consistently
+
+### Fixed
+- Crash when converting to WEBP (missing encoder — now handled by SkiaSharp)
+
+---
+
 ## [0.2.0] - 2026-05-12
 
 ### Added 
