@@ -3,11 +3,76 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Filevy"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Label Content="Filevy -Features Coming soon." HorizontalAlignment="Center" Margin="0,173,0,0" VerticalAlignment="Top" FontSize="36" FontWeight="Bold"/>
+        Title="Filevy" Height="600" Width="950">
 
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Margin="0,0,0,16">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="160"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBox Grid.Column="0"
+                     Text="{Binding SelectedFileName, Mode=OneWay}"
+                     IsReadOnly="True"
+                     Padding="8,6"
+                     VerticalContentAlignment="Center"/>
+
+            <Button Grid.Column="1"
+                    Content="Select File"
+                    Command="{Binding SelectFileCommand}"
+                    Padding="12,6" Margin="8,0"/>
+
+            <ComboBox Grid.Column="2"
+                      ItemsSource="{Binding AvailableFormats}"
+                      SelectedItem="{Binding SelectedFormat}"
+                      Padding="8,4"
+                      VerticalContentAlignment="Center"/>
+
+            <Button Grid.Column="3"
+                    Content="Convert"
+                    Command="{Binding ConvertCommand}"
+                    Padding="12,6" Margin="8,0,0,0"/>
+        </Grid>
+
+        <ListView Grid.Row="1"
+                  ItemsSource="{Binding Jobs}"
+                  SelectedItem="{Binding SelectedJob}"
+                  SelectionMode="Single">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Input File" Width="200"
+                                    DisplayMemberBinding="{Binding InputFileName}"/>
+                    <GridViewColumn Header="Output File" Width="200"
+                                    DisplayMemberBinding="{Binding OutputFileName}"/>
+                    <GridViewColumn Header="Type" Width="120"
+                                    DisplayMemberBinding="{Binding ConversionType}"/>
+                    <GridViewColumn Header="Progress" Width="160">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <ProgressBar Value="{Binding Progress}"
+                                             Maximum="100"
+                                             Width="130" Height="16"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <Button Grid.Row="2"
+                Content="Show Converted File"
+                Command="{Binding ShowOutputFolderCommand}"
+                HorizontalAlignment="Right"
+                Padding="12,6" Margin="0,16,0,0"/>
     </Grid>
 </Window>
