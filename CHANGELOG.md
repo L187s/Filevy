@@ -10,6 +10,16 @@ All notable changes to Filevy will be documented here.
 
 ---
 
+## [0.2.0] - 2026-05-12
+
+### Added 
+- Added functionality to Convert JPG/PNG
+- Added GUI MockUp for tests
+
+#### Be Aware ⚠️
+- Be aware that when you try to convert to .webp the program cashes.
+- Nuget Package needed: SkiaSharp (Documentation: https://skiasharp.com/)
+
 ## [0.1.2] - 2026-05-12
 ### Added 
 - Added MVVM Files
