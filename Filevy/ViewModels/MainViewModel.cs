@@ -15,6 +15,12 @@ namespace Filevy.ViewModels
         private string _selectedFormat = string.Empty;
         private ConversionJob? _selectedJob;
 
+        public enum ChooseConversion
+        {
+            ImageConversion = 1,
+            XLSXConversion = 2
+        }
+
         public string SelectedFilePath
         {
             get => _selectedFilePath;
@@ -50,13 +56,14 @@ namespace Filevy.ViewModels
         public RelayCommand ConvertCommand { get; }
         public RelayCommand ShowOutputFolderCommand { get; }
         public RelayCommand ToggleThemeCommand { get; }
-
+        ChooseConversion Conversion = new ChooseConversion();
         public MainViewModel()
         {
             SelectFileCommand = new RelayCommand(SelectFile);
             ConvertCommand = new RelayCommand(AddConversionJob);
             ShowOutputFolderCommand = new RelayCommand(ShowOutputFolder);
             ToggleThemeCommand = new RelayCommand(ToggleTheme);
+
         }
 
         private void ToggleTheme()
@@ -69,7 +76,7 @@ namespace Filevy.ViewModels
         {
             var dialog = new OpenFileDialog
             {
-                Filter = "Image Files|*.png;*.jpg;*.jpeg;*.webp|All Files|*.*"
+                Filter = "Image Files|*.png;*.jpg;*.jpeg;*.webp|CSV Files|*.csv|All Files|*.*"
             };
             if (dialog.ShowDialog() != true) return;
 
@@ -80,6 +87,7 @@ namespace Filevy.ViewModels
         private void UpdateAvailableFormats()
         {
             AvailableFormats.Clear();
+
             var ext = Path.GetExtension(SelectedFilePath).ToLower();
 
             switch (ext)
@@ -87,15 +95,22 @@ namespace Filevy.ViewModels
                 case ".png":
                     AvailableFormats.Add("JPG");
                     AvailableFormats.Add("WEBP");
+                    Conversion = ChooseConversion.ImageConversion;
                     break;
                 case ".jpg":
                 case ".jpeg":
                     AvailableFormats.Add("PNG");
                     AvailableFormats.Add("WEBP");
+                    Conversion = ChooseConversion.ImageConversion;
                     break;
                 case ".webp":
                     AvailableFormats.Add("PNG");
                     AvailableFormats.Add("JPG");
+                    Conversion = ChooseConversion.ImageConversion;
+                    break;
+                case ".csv":
+                    AvailableFormats.Add("XLSX");
+                    Conversion = ChooseConversion.XLSXConversion;
                     break;
             }
 
@@ -128,7 +143,17 @@ namespace Filevy.ViewModels
 
             try
             {
-                await Task.Run(() => Converters.ImageConverter.Convert(job.InputFilePath, job.OutputFilePath, progress));
+                switch (Conversion)
+                {
+                    case ChooseConversion.ImageConversion:
+                        await Task.Run(() => Converters.ImageConverter.Convert(job.InputFilePath, job.OutputFilePath, progress));
+                        break;
+                    case ChooseConversion.XLSXConversion:
+                        await Task.Run(() => Converters.XLSXConverter.Convert(job.InputFilePath, job.OutputFilePath, progress));
+                        break;
+                }
+
+
                 job.Status = ConversionStatus.Done;
             }
             catch (Exception ex)

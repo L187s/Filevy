@@ -81,7 +81,21 @@ cd Filevy
 dotnet build
 dotnet run
 ```
+---
+## 📦 Used NuGet Packages
 
+| Feature / Conversion        | Package                                                | License |
+|-----------------------------|--------------------------------------------------------|---------|
+| PNG/JPG/WEBP <-> each other | ImageSharp                                             | MIT     |
+| Docx -> PDF                 | QuestPDF                                               | MIT     |
+| PDF -> DOCX                 | LibreOffice                                            | MPL-2.0 |
+| MP4 -> MP3                  | Xabe.FFmpeg                                            | CC      |
+| CSV -> XLSX                 | ColsedXML                                              | MIT     |
+| SVG -> PNG / PDF            | SVG.Skia render SVG, SkiaSharp to convert in PNG / PDF | MIT     |
+| MP3 <-> WAV                 | Xabe.FFmpeg | CC|
+| HEIC -> JPG / PNG           | Magick.Net-Q16-AnyCPU| Apache-2.0|
+|Markdown -> HTML / PDF | Markdig to Convert in HTML, QuestPDF render PDF | BSD-2 (Markdig), <br/>MIT (QuestPDF)|
+|ZIP / RAR <-> ZIP/7Z | SharpCompress | MIT|
 ---
 
 ## Contributing
